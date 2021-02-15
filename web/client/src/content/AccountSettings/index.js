@@ -9,6 +9,7 @@ import { Edit16 } from '@carbon/icons-react'
 import EmailValidator from 'email-validator'
 import AuthClient from '../../rest/auth'
 import { keyboardOnlySubmit } from '../../utils'
+import AppContext from "../../context/app";
 
 const AccountSettingsContent = ({
   currentUser,
@@ -17,6 +18,8 @@ const AccountSettingsContent = ({
   setEditing,
   history,
 }) => {
+  const { t } = useContext(AppContext)
+
   let onLogoutRequested = async () => {
     try {
       await AuthClient.logout()
@@ -38,29 +41,29 @@ const AccountSettingsContent = ({
     <>
       <div className="userinfo_header">
         <span className="userinfo_title" tabIndex={0}>
-          User Information
+          {t("content.accountSettings.userInformation")}
         </span>
         <Button
           kind="ghost"
           className="userinfo_edit"
           onClick={() => setEditing(!isEditing)}
         >
-          Edit
+          {t("content.accountSettings.edit")}
           <Edit16 style={{ marginLeft: 10 }} />
         </Button>
       </div>
       <Field
-        title="Name"
+        title={t("content.accountSettings.name")}
         value={`${currentUser.firstName} ${currentUser.lastName}`}
       />
-      <Field title="User ID" value={currentUser.email} />
+      <Field title={t("content.accountSettings.userID")} value={currentUser.email} />
       <p
         className={'accountSettings__logout'}
         tabIndex={0}
         onKeyDown={(e) => keyboardOnlySubmit(e, onLogoutRequested)}
         onClick={onLogoutRequested}
       >
-        <span>Logout</span>
+        <span>{t("content.accountSettings.logout")}</span>
       </p>
     </>
   )
@@ -71,6 +74,7 @@ const AccountSettingsContentEdit = ({ currentUser, setCanSave }) => {
   const isNameValid = (name) => !isEmpty(name)
   const isEmailValid = (email) => EmailValidator.validate(email)
 
+  const { t } = useContext(AppContext)
   const [editedUser, setEditedUser] = useState(currentUser)
 
   const changeUserField = (field, value) => {
@@ -88,32 +92,31 @@ const AccountSettingsContentEdit = ({ currentUser, setCanSave }) => {
     <div className="userinfo-edit">
       <TextInput
         id="input_firstname"
-        placeholder="Your first name here"
-        labelText="First name"
+        placeholder={t("content.accountSettings.firstNamePlaceholder")}
+        labelText={t("content.accountSettings.firstName")}
         value={editedUser.firstName}
         onChange={(input) => changeUserField('firstName', input.target.value)}
         invalid={!isNameValid(editedUser.firstName)}
-        invalidText="Please enter your first name"
+        invalidText={t("content.accountSettings.firstNameInvalid")}
       />
       <TextInput
         id="input_lastname"
-        placeholder="Your last name here"
-        labelText="Last name"
+        placeholder={t("content.accountSettings.lastNamePlaceholder")}
+        labelText={t("content.accountSettings.lastName")}
         value={editedUser.lastName}
         onChange={(input) => changeUserField('lastName', input.target.value)}
         invalid={!isNameValid(editedUser.lastName)}
-        invalidText="Please enter your last name"
+        invalidText={t("content.accountSettings.lastNameInvalid")}
       />
       <TextInput
         id="input_email"
-        placeholder="Your email here"
-        labelText="Contact"
+        placeholder={t("content.accountSettings.contactPlaceholder")}
+        labelText={t("content.accountSettings.contact")}
         value={editedUser.email}
         onChange={(input) => changeUserField('email', input.target.value)}
         invalid={!isEmailValid(editedUser.email)}
-        invalidText="Invalid email"
+        invalidText={t("content.accountSettings.contactInvalid")}
       />
-      <Field title="User ID" value={currentUser.userID} />
     </div>
   )
 }
@@ -123,13 +126,15 @@ const AccountSettings = ({ history }) => {
   const [isEditing, setEditing] = useState(false)
   const [canSave, setCanSave] = useState(false)
 
+  const { t } = useContext(AppContext)
+
   return (
     <>
-      <Title>Profile</Title>
+      <Title>{t("content.accountSettings.title")}</Title>
       <div className="userinfo-parent">
         {isEditing && (
           <SaveHeader
-            title="User Information"
+            title={t("content.accountSettings.userInformation")}
             onCancel={() => setEditing(false)}
             onSave={() => setEditing(false)}
             canSave={canSave}

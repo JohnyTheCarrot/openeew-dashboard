@@ -2,6 +2,8 @@
   "components": {
     "header": {
       "title": "OpenEEW Monitoring",
+      "openeew": "OpenEEW",
+      "dashboard": "Dashboard",
       "notifications": "Notifications",
       "avatar": "User avatar"
     },
@@ -12,15 +14,36 @@
   },
   "content": {
     "accountSettings": {
-      "welcome": "Welcome {{name}}!"
+      "title": "Profile",
+      "welcome": "Welcome {{name}}!",
+      "userInformation": "User Information",
+      "edit": "Edit",
+      "name": "Name",
+      "userID": "User ID",
+      "logout": "Logout",
+      "save": "Save",
+      "cancel": "Cancel",
+      "firstName": "First name",
+      "firstNamePlaceholder": "Your first name here",
+      "firstNameInvalid": "Please enter your first name",
+      "lastName": "Last name",
+      "lastNamePlaceholder": "Your last name here",
+      "lastNameInvalid": "Please enter your last name",
+      "contact": "Contact",
+      "contactPlaceholder": "Your email here",
+      "contactInvalid": "Invalid email address"
     },
     "login": {
       "title": "Log in to",
       "forgotPassword": "Forgot Password?",
       "continue": "Continue",
+      "log_in": "Log in",
       "rememberMe": "Remember Me",
+      "ariaLabelBackToEmail": "back to email",
       "loggingIn": "Logging in",
       "enterId": "Enter your OpenEEW ID",
+      "ariaLabelEnterEmail": "enter your email",
+      "ariaLabelEnterPassword": "enter your password",
       "errors": {
         "errorHeading": "Error logging in.",
         "generic": "There was a problem processing that request",

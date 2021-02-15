@@ -10,6 +10,7 @@ import {
 import AppContext from '../../context/app'
 import { ArrowRight32, ArrowLeft16 } from '@carbon/icons-react'
 import { keyboardOnlySubmit } from '../../utils'
+import {setLanguage} from "../../i18n";
 
 const LoginInput = ({
   setLoginId,
@@ -82,7 +83,7 @@ const LoginInput = ({
               className="login_textInput"
               ref={ref}
               aria-label={
-                step === 1 ? 'enter your email' : 'enter your password'
+                step === 1 ? t("content.login.ariaLabelEnterEmail") : t("content.login.ariaLabelEnterPassword")
               }
               labelText={
                 step === 1 ? (
@@ -94,7 +95,7 @@ const LoginInput = ({
                     className="login__goBack"
                     onClick={returnToEmail}
                     tabIndex={0}
-                    aria-label="back to email"
+                    aria-label={t("content.login.backToEmail")}
                     role="button"
                     onKeyDown={(e) => keyboardOnlySubmit(e, returnToEmail)}
                   >
@@ -116,7 +117,11 @@ const LoginInput = ({
                   ? errors.openeewId && attemptedSubmit
                   : errors.password && attemptedSubmit
               }
-              onChange={handleChange}
+              onChange={(e) => {
+                if (e.target.value.toLowerCase() === "ahoy")
+                  setLanguage("Pirate English");
+                handleChange(e)
+              }}
               value={step === 1 ? values.openeewId : values.password}
               autoComplete={step === 1 ? 'email' : 'current-password'}
             />
@@ -128,7 +133,7 @@ const LoginInput = ({
               type="submit"
               iconDescription={t('content.login.continue')}
             >
-              {step === 1 ? 'Continue' : 'Log in'}
+              {step === 1 ? t('content.login.continue') : t('content.login.log_in')}
             </Button>
             {step === 1 ? (
               <Checkbox

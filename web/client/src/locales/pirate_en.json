@@ -1,0 +1,44 @@
+{
+  "components": {
+    "header": {
+      "title": "OpenEEW Scoutin'",
+      "notifications": "Shouts",
+      "avatar": "Pirate avatar"
+    },
+    "sidemenu": {
+      "title": "Side navigation",
+      "settings": "Settings"
+    }
+  },
+  "content": {
+    "accountSettings": {
+      "welcome": "Welcome aboard {{name}}!",
+      "userInformation": "Pirate Information"
+    },
+    "login": {
+      "title": "Yarrrrr! Get aboard on",
+      "forgotPassword": "Forgot Yer Password?",
+      "continue": "Hoist the sails lads!",
+      "log_in": "Lemme in!",
+      "rememberMe": "Ye best not forget me, ye landlubber.",
+      "loggingIn": "Way hay and up she rises",
+      "enterId": "Yarr!! Gimme yer OpenEEW ID",
+      "errors": {
+        "errorHeading": "Arrrr, the ship has sunk!",
+        "generic": "Thar was a problem processin' that request",
+        "incorrectCreds": "The email or password ye entered be incorrect"
+      },
+      "form": {
+        "labels": {
+          "openeewId": "Yer OpenEEW ID",
+          "password": "Yer Password"
+        },
+        "errors": {
+          "idRequired": "Gimme yer OpenEEW ID",
+          "idInvalid": "OpenEEW ID must be a valid email",
+          "passwordRequired": "Gimme yer password"
+        }
+      }
+    }
+  }
+}

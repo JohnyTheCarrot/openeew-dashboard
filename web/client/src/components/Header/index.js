@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Header,
   HeaderName,
@@ -6,13 +6,18 @@ import {
   HeaderGlobalAction,
 } from 'carbon-components-react/lib/components/UIShell'
 import { Link } from 'react-router-dom'
+import {LanguageDropdown} from "../../i18n";
+import AppContext from '../../context/app'
 
 const _Header = ({ removeLogin, history }) => {
+  const { t } = useContext(AppContext)
+
   return (
     <Header aria-label="OpenEEW Dashboard">
-      <HeaderName element={Link} to="/events" prefix="OpenEEW">
-        Dashboard
+      <HeaderName element={Link} to="/events" prefix={t("components.header.openeew")}>
+        {t("components.header.dashboard")}
       </HeaderName>
+      {LanguageDropdown}
       {removeLogin ? null : (
         <HeaderGlobalBar>
           <HeaderGlobalAction

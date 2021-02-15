@@ -1,9 +1,11 @@
-import React, { useRef, useEffect } from 'react'
+import React, {useRef, useEffect, useContext} from 'react'
 import { Save16 } from '@carbon/icons-react'
 import { keyboardOnlySubmit } from '../../utils'
+import AppContext from "../../context/app";
 
 const SaveHeader = ({ onSave, onCancel, title, canSave }) => {
   const focus = useRef()
+  const { t } = useContext(AppContext)
 
   // focus on title when this component loads
   useEffect(() => {
@@ -23,7 +25,7 @@ const SaveHeader = ({ onSave, onCancel, title, canSave }) => {
           tabIndex={0}
           aria-disabled={!canSave}
           data-disabled={!canSave}
-          aria-label="save"
+          aria-label={t("content.accountSettings.save")}
           role="button"
           onKeyDown={(event) => {
             if (onSave && canSave) keyboardOnlySubmit(event, onSave)
@@ -32,20 +34,20 @@ const SaveHeader = ({ onSave, onCancel, title, canSave }) => {
             if (onSave && canSave) onSave()
           }}
         >
-          Save <Save16 style={{ marginLeft: 5 }} />
+          {t("content.accountSettings.save")} <Save16 style={{ marginLeft: 5 }} />
         </span>
         <span
           onClick={() => {
             if (onCancel) onCancel()
           }}
           tabIndex={0}
-          aria-label="cancel"
+          aria-label={t("content.accountSettings.cancel")}
           role="button"
           onKeyDown={(event) => {
             if (onSave) keyboardOnlySubmit(event, onSave)
           }}
         >
-          Cancel
+          {t("content.accountSettings.cancel")}
         </span>
       </span>
     </div>

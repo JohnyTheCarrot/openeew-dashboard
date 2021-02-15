@@ -8,7 +8,7 @@ import {
   SkipToContent,
   SideNav,
   SideNavItems,
-  SideNavLink,
+  SideNavLink
 } from 'carbon-components-react/lib/components/UIShell'
 
 import {
@@ -19,6 +19,7 @@ import {
 } from '@carbon/icons-react'
 
 import { Link } from 'react-router-dom'
+import {LanguageDropdown} from "../../i18n";
 
 const Shell = ({ isSideNavExpanded, sideNavToggle, history }) => (
   <Header aria-label="OpenEEW Dashboard">
@@ -36,6 +37,7 @@ const Shell = ({ isSideNavExpanded, sideNavToggle, history }) => (
     </HeaderName>
 
     <HeaderGlobalBar>
+      {LanguageDropdown}
       <HeaderGlobalAction
         aria-label="Account Settings"
         onClick={() => {
